@@ -5,13 +5,13 @@ const SerchResult = (props) => {
     let music = props.music
     console.log(music)
     return (
-        <Col xs={10}>
-            <h2>{props.name}</h2>
-            <Row className=" row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3">
-            <div id="searchResults" style={{ display: "block" }}>
-                {/* {music.map(music =><CardResult album={music}/> )} */}
+        <Col>
+            <h2 className="titleMain ">{props.name}</h2>
+           
+            <div id="searchResults" className="d-flex w-100" >
+                {music.slice(0,5).map(music =><CardResult album={music}/> )} 
             </div>
-            </Row>
+            
           </Col>           
 
                

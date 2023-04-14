@@ -1,15 +1,15 @@
-import { Col, Row } from "react-bootstrap"
+import { Col, Container, Row } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import SerchResult from "./SerchResult"
 import { useEffect, useState } from "react"
 
 const Main = () =>{
-    const rock = []
-    const pop = []
-    const hipPop = []
-//   const [rock,setRock]=useState([])
-//   const [pop,setPop] = useState([])
-//   const [hipPop,setHipPop]= useState([])
+    // const rock = []
+    // const pop = []
+    // const hipPop = []
+  const [rock,setRock]=useState([])
+  const [pop,setPop] = useState([])
+  const [hipPop,setHipPop]= useState([])
     let rockArtists = [
         'queen',
         'u2',
@@ -59,11 +59,11 @@ const Main = () =>{
           if (response.ok) {
             let result = await response.json()
             if(typemusic==="rock"){
-                rock.push(result.data)
+                setRock(result.data)
             } else if(typemusic==="pop"){
-                pop.push(result.data)
+                setPop(result.data)
             }else{
-                hipPop.push(result.data)
+                setHipPop(result.data)
             }// transforms the response to json
             
             // create a new album tyle
@@ -101,17 +101,18 @@ const Main = () =>{
               hipHopArtists[Math.floor(Math.random() * hipHopArtists.length)]
             if (!hipHopRandomArtists.includes(artist)) {
               hipHopRandomArtists.push(artist)
-            }
+            }}
+
         for (let j = 0; j < rockRandomArtists.length; j++)
         await handleArtist(rockRandomArtists[j], 'rock')
 
-    //     for (let k = 0; k < popRandomArtists.length; k++)
-    //     await handleArtist(popRandomArtists[k], 'pop')
+        for (let k = 0; k < popRandomArtists.length; k++)
+        await handleArtist(popRandomArtists[k], 'pop')
 
-    //     for (let l = 0; l < hipHopRandomArtists.length; l++)
-    //     await handleArtist(hipHopRandomArtists[l], 'hipHop')
-    //   }
-   }}  
+        for (let l = 0; l < hipHopRandomArtists.length; l++)
+        await handleArtist(hipHopRandomArtists[l], 'hipHop')
+      
+   }  
 useEffect(()=>{
   randomresult()  
 },[])
@@ -121,22 +122,29 @@ console.log(rock)
 // console.log(hipPop)
 
 return (
+   <>
     <Row>
-        <Col className="col-9 col-lg-11 mainLinks d-none d-md-flex">
+        <Col className="col-9 col-lg-11 mainLinks d-none d-md-flex justify-content-between">
         <Link href="#">TRENDING</Link>
             <Link href="#">PODCAST</Link>
             <Link href="#">MOODS AND GENRES</Link>
             <Link href="#">NEW RELEASES</Link>
             <Link href="#">DISCOVER</Link>
         </Col>
+    </Row>
         <Row>
-          
-        {/* <SerchResult  name="pop"/> */}
-        <SerchResult music={rock}  name="Rock"/>
-        {/* <SerchResult  name="HipPop"/> */}
-            
+        
+        <SerchResult  xs={10}  music={pop} name="pop"/>
         </Row>
-    </Row>)
+        <Row>
+        <SerchResult  xs={10}  music={rock}  name="Rock"/>
+        </Row>
+        <Row>
+        <SerchResult  xs={10}  music={hipPop} name="HipPop"/>
+        
+        </Row>
+        </>
+    )
 
 
 }
