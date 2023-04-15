@@ -134,7 +134,7 @@ const Main = () => {
 
   return (
     <>
-      <Row>
+      {/* <Row>
         <Col className="col-9 col-lg-11 mainLinks d-none d-md-flex justify-content-between">
           <Link href="#">TRENDING</Link>
           <Link href="#">PODCAST</Link>
@@ -142,8 +142,8 @@ const Main = () => {
           <Link href="#">NEW RELEASES</Link>
           <Link href="#">DISCOVER</Link>
         </Col>
-      </Row>
-      <Row>
+      </Row> */}
+      <Row >
 
         <SerchResult music={pop} xs={10} name="pop" />
       </Row>

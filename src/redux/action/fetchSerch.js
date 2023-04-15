@@ -2,6 +2,7 @@ export const ADD_ALBUM_ROCK = "ADD_ALBUM_ROCK"
 export const ADD_ALBUM_HIP = "ADD_ALBUM_HIPPOP"
 export const ADD_ALBUM_POP = "ADD_ALBUM_POP"
 export const ADD_ALBUM_ARTIS = "ADD_ALBUM_ARTIS"
+export const ADD_SINGLE_ALBUM = "ADD_SINGLE_ALBUM"
 
 export const addAlbumRock = (album)=>{
     return{
@@ -24,6 +25,12 @@ export const addAlbumPop = (album)=>{
 export const addAlbumArtis = (album)=>{
     return{
         type:ADD_ALBUM_ARTIS,
+        payload:album
+    }
+}
+export const addSingleAlbum = (album)=>{
+    return {
+        type:ADD_SINGLE_ALBUM,
         payload:album
     }
 }
@@ -60,4 +67,23 @@ export const addAlbumArtistaThunk = (artistName,gender)=>{
             
         }
     }
+}
+
+export const addSingleAlbumThunk = (id)=>{
+    return async (dispatch,getState)=>{
+        try {
+            let resp = await fetch("https://striveschool-api.herokuapp.com/api/deezer/album/"+id,{
+                method:"GET",
+                headers,
+            })
+            if(resp.ok){
+                let data = await resp.json()
+                console.log(data)
+                dispatch(addSingleAlbum(data))
+            }
+        } catch (error) {
+            
+        }
+    }
+
 }

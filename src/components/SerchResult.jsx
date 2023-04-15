@@ -27,9 +27,9 @@ const SerchResult = (props) => {
             {/* <div id="searchResults" className="d-flex w-100" > */}
 
             {/* </div> */}
-            <h2 className="titleMain ">{props.name}</h2>
+            <h2 className="titleMain">{props.name}</h2>
 
-            <div id="searchResults" className="d-flex w-100" >
+            <div id="searchResults" className="d-flex w-100 p-0 mb-5" >
                 {music0 && music0.slice(0, 1).map(music => <CardResult album={music} />)}
                 {music1 && music1.slice(0, 1).map(music => <CardResult album={music} />)}
                 {music2 && music2.slice(0, 1).map(music => <CardResult album={music} />)}
