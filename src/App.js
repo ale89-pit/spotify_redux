@@ -21,7 +21,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/albumPage/:id" element={<AlbumPage />} />
-                <Route path="/artistPage/:id" element={<ArtistPage />} />
+                <Route path="/artistPage/:id/:nameArtist" element={<ArtistPage />} />
               </Routes>
               <FooterPlayer />
             </Col>
