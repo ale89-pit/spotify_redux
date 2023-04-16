@@ -4,13 +4,14 @@ import { ADD_ALBUM_HIP } from "../action/fetchSerch";
 import { ADD_ALBUM_ROCK } from "../action/fetchSerch";
 import { ADD_ALBUM_ARTIS } from "../action/fetchSerch";
 import { ADD_SINGLE_ALBUM } from "../action/fetchSerch";
-
+import { ADD_QUERY_RESULT } from "../action/fetchSerch";
 const initialState = {
   rock:[],
   hipHop:[],
   pop:[],
   albumArtist:[],
-  singleAlbum:[]   
+  singleAlbum:[],
+  queryResult:[]   
   
 };
 
@@ -44,6 +45,12 @@ const searchResult = (state = initialState, action) => {
               ...state,
               singleAlbum:[action.payload]
              }
+             case ADD_QUERY_RESULT:
+              return{
+                ...state,
+                queryResult:[action.payload]
+              }
+
     default:
       return state;
   }

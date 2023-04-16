@@ -3,6 +3,7 @@ export const ADD_ALBUM_HIP = "ADD_ALBUM_HIPPOP"
 export const ADD_ALBUM_POP = "ADD_ALBUM_POP"
 export const ADD_ALBUM_ARTIS = "ADD_ALBUM_ARTIS"
 export const ADD_SINGLE_ALBUM = "ADD_SINGLE_ALBUM"
+export const ADD_QUERY_RESULT = "ADD_QUERY_RESULT"
 
 export const addAlbumRock = (album)=>{
     return{
@@ -34,6 +35,12 @@ export const addSingleAlbum = (album)=>{
         payload:album
     }
 }
+export const addQueryResult = (album)=>{
+    return {
+        type: ADD_QUERY_RESULT,
+        payload:album
+    }
+}
 let headers = new Headers({
     // sets the headers
     "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
@@ -58,8 +65,10 @@ export const addAlbumArtistaThunk = (artistName,gender)=>{
                     
                 }else if(gender==="pop"){
                     dispatch(addAlbumPop(data))
-                }else{
+                }else if(gender==="albumArtist"){
                     dispatch(addAlbumArtis(data))
+                }else{
+                    dispatch(addQueryResult(data))
                 }
                 
             }

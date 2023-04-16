@@ -45,7 +45,7 @@ const ArtistPage = () => {
 
     }, [])
     useEffect(() => {
-        dispatch(addAlbumArtistaThunk(nameArtist))
+        dispatch(addAlbumArtistaThunk(nameArtist, "albumArtist"))
     }, [art])
 
 

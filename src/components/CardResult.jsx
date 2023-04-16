@@ -6,6 +6,7 @@ const CardResult = (props) => {
 
   return (
     <>
+
       <Col className=" text-center" id={props.album.album.id}>
         <Link to={`/albumPage/${props.album.album.id}`} replace={true} >
           <img class="img-fluid" src={props.album.album.cover_medium} alt="1" />

@@ -4,11 +4,15 @@ import SerchResult from "./SerchResult"
 import { useEffect, useState } from "react"
 import { addAlbumArtistaThunk } from "../redux/action/fetchSerch"
 import { useDispatch, useSelector } from "react-redux"
+import SearchQueryResult from "./SearchQueryResult"
 const Main = () => {
   const dispatch = useDispatch()
   const rock = useSelector((state) => state.searchResult.rock)
   const pop = useSelector((state) => state.searchResult.pop)
   const hipHop = useSelector((state) => state.searchResult.hipHop)
+  const queryResult = useSelector((state) => state.searchResult.queryResult[0])
+
+
   // const rock = []
   // const pop = []
   // const hipPop = []
@@ -127,6 +131,7 @@ const Main = () => {
   useEffect(() => {
     randomresult()
   }, [])
+  console.log(queryResult)
 
   // console.log(rock)
   // console.log(pop)
@@ -143,14 +148,20 @@ const Main = () => {
           <Link href="#">DISCOVER</Link>
         </Col>
       </Row> */}
+      {queryResult ? <Row>
+
+        <SearchQueryResult music={queryResult} name="Search Result" xs={10} />
+      </Row> : null}
       <Row >
 
         <SerchResult music={pop} xs={10} name="pop" />
       </Row>
       <Row>
+
         <SerchResult music={rock} xs={10} name="Rock" />
       </Row>
       <Row>
+
         <SerchResult music={hipHop} xs={10} name="HipPop" />
       </Row>
     </>

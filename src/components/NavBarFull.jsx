@@ -1,7 +1,22 @@
-import { Button, Col, Container, Nav, Navbar, Row } from "react-bootstrap"
+import { useState } from "react"
+import { Button, Col, Container, Form, Nav, Navbar, Row } from "react-bootstrap"
+import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
+import { addAlbumArtistaThunk, addQueryResult } from "../redux/action/fetchSerch"
 
 const NavBarFull = () => {
+  const [query, setQuery] = useState("")
+
+  const dispatch = useDispatch()
+
+  const querySearch = (e) => {
+    e.preventDefault()
+    setQuery(e.target.value)
+  }
+  const search = (e) => {
+    e.preventDefault()
+    dispatch(addAlbumArtistaThunk(query))
+  }
   return (
     <>
       <Nav className="navbar navbar-expand-md navbar-white bg-navbar d-flex flex-column fixed-left justify-content-between" id="sidebar">
@@ -40,11 +55,13 @@ const NavBarFull = () => {
                 </Nav.Item>
               </div>
 
-              <div className="input-group mt-3">
-                <input
-                  type="text"
+              <Form className="input-group mt-3" onSubmit={search}>
+                <Form.Control
+                  type="search"
+                  value={query}
+                  onChange={querySearch}
                   className="form-control mb-2"
-                  id="searchField"
+
                   placeholder="Search"
                   aria-label="Search"
                   aria-describedby="basic-addon2"
@@ -54,15 +71,15 @@ const NavBarFull = () => {
                   style={{ marginbottom: "4%" }}
                 >
                   <Button
-                    className="btn btn-outline-secondary btn-sm"
-                    type="button"
+                    className="btn-outline-secondary btn-sm"
+                    type="submit"
                     id="button-addon1"
-                    onClick="search()"
+
                   >
                     GO
                   </Button>
                 </div>
-              </div>
+              </Form>
 
             </Nav>
           </div>

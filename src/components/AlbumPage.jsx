@@ -15,6 +15,9 @@ const AlbumPage = () => {
     console.log("tracks", tracks)
     useEffect(() => {
 
+    }, [])
+    useEffect(() => {
+
     }, [id])
     return (
         <Row>

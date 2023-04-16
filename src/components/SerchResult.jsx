@@ -1,6 +1,7 @@
 import { Col, Row } from "react-bootstrap"
 import CardResult from "./CardResult"
 import { useState } from "react"
+import { useSelector } from "react-redux"
 
 const SerchResult = (props) => {
     let musicArtResult = props.music
@@ -16,10 +17,13 @@ const SerchResult = (props) => {
     // }
     // console.log(music)
     return (
-        <Col>
+        <>
+
+
+
+
             {/* {music.slice(0, 1).map((art) => {
                 return <h2 className="titleMain ">{art.artist.name}</h2>
-
             }
             )} */}
 
@@ -27,17 +31,20 @@ const SerchResult = (props) => {
             {/* <div id="searchResults" className="d-flex w-100" > */}
 
             {/* </div> */}
-            <h2 className="titleMain">{props.name}</h2>
 
-            <div id="searchResults" className="d-flex w-100 p-0 mb-5" >
-                {music0 && music0.slice(0, 1).map(music => <CardResult album={music} />)}
-                {music1 && music1.slice(0, 1).map(music => <CardResult album={music} />)}
-                {music2 && music2.slice(0, 1).map(music => <CardResult album={music} />)}
-                {music3 && music3.slice(0, 1).map(music => <CardResult album={music} />)}
-            </div>
 
-        </Col>
+            <Col xs={12}>
+                <h2 className="titleMain">Nome</h2>
+            </Col>
 
+            {music0 && music0.slice(0, 1).map(music => <CardResult album={music} />)}
+            {music1 && music1.slice(0, 1).map(music => <CardResult album={music} />)}
+            {music2 && music2.slice(0, 1).map(music => <CardResult album={music} />)}
+            {music3 && music3.slice(0, 1).map(music => <CardResult album={music} />)}
+
+
+
+        </>
 
 
 
