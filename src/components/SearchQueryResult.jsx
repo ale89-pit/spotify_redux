@@ -7,8 +7,8 @@ const SearchQueryResult = (props) => {
     return (
         <>
 
-            <Col>
-                <h2 className="titleMain">Nome</h2>
+            <Col xs={12}>
+                <h2 className="titleMain">{props.name}</h2>
             </Col>
             {props.music.map(music => <CardResult album={music} />)}
         </>

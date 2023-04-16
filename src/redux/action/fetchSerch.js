@@ -88,7 +88,7 @@ export const addSingleAlbumThunk = (id)=>{
             if(resp.ok){
                 let data = await resp.json()
                 console.log(data)
-                dispatch(addSingleAlbum(data))
+                 dispatch(addSingleAlbum(data))
             }
         } catch (error) {
             

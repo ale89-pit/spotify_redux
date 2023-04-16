@@ -16,6 +16,7 @@ const NavBarFull = () => {
   const search = (e) => {
     e.preventDefault()
     dispatch(addAlbumArtistaThunk(query))
+    setQuery('')
   }
   return (
     <>

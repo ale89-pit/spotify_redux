@@ -34,7 +34,7 @@ const SerchResult = (props) => {
 
 
             <Col xs={12}>
-                <h2 className="titleMain">Nome</h2>
+                <h2 className="titleMain">{props.name}</h2>
             </Col>
 
             {music0 && music0.slice(0, 1).map(music => <CardResult album={music} />)}
