@@ -11,7 +11,8 @@ const initialState = {
   pop:[],
   albumArtist:[],
   singleAlbum:[],
-  queryResult:[]   
+  queryResult:[],
+  loading:false,
   
 };
 
@@ -43,7 +44,8 @@ const searchResult = (state = initialState, action) => {
             case ADD_SINGLE_ALBUM:
              return{
               ...state,
-              singleAlbum:[action.payload]
+              singleAlbum:[action.payload],
+              loading: true
              }
              case ADD_QUERY_RESULT:
               return{
