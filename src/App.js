@@ -18,19 +18,19 @@ function App() {
             <Col className="d-none d-sm-flex flex-column ">
               <NavBarFull />
             </Col>
-            
+
             <Col xs={12} md={9} className="offeset-md-3 pb-5">
-            <Row>
-        <Col className="col-9 col-lg-11 mainLinks d-none d-md-flex justify-content-between mx-auto">
-          
-          <a href="">TRENDING</a>
-          <a href="">PODCAST</a>
-          <a href="">MOODS AND GENRES</a>
-          <a href="">NEW RELEASES</a>
-          <a href="">DISCOVER</a>
-         
-        </Col>
-      </Row>
+              <Row>
+                <Col className="col-9 col-lg-11 mainLinks d-none d-md-flex justify-content-between mx-auto">
+
+                  <a href="">TRENDING</a>
+                  <a href="">PODCAST</a>
+                  <a href="">MOODS AND GENRES</a>
+                  <a href="">NEW RELEASES</a>
+                  <a href="">DISCOVER</a>
+
+                </Col>
+              </Row>
               <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/albumPage/:id" element={<AlbumPage />} />
