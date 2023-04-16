@@ -3,13 +3,15 @@ export const REMOVE_FROM_FAV = "REMOVE_FROM_FAV"
 export const addTrackFav = (track)=>{
     return {
         type:ADD_TO_FAV,
-        payload:track
+        payload:track,
+        
     }
 }
 export const removeTrack = (i)=>{
     return{
         type:REMOVE_FROM_FAV,
-        payload:i
+        payload:i,
+        
     }
 }
 let headers = new Headers({

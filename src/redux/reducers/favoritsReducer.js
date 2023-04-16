@@ -2,6 +2,7 @@ import { ADD_TO_FAV } from "../action/fetchFavortis";
 import { REMOVE_FROM_FAV } from "../action/fetchFavortis";
 const initialState = {
   content: [],
+  
 };
 
 const favoritsReducer = (state = initialState, action) => {
@@ -9,12 +10,14 @@ const favoritsReducer = (state = initialState, action) => {
     case ADD_TO_FAV:
       return{
         ...state,
-          content:[...state.content,action.payload]
+          content:[...state.content,action.payload],
+          
         }
       case REMOVE_FROM_FAV:
         return{
           ...state,
-          content:state.favoritsReducer.content.filter((fav,i)=> i !==action.payload)
+          content:state.content.filter((fav)=> fav.id !==action.payload),
+          
         }
     default:
       return state;

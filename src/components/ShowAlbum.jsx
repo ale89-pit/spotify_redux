@@ -1,13 +1,34 @@
 import { Button } from "react-bootstrap"
 import { Col } from "react-bootstrap"
 import { useDispatch, useSelector } from "react-redux"
-import { Star } from "react-bootstrap-icons"
-import { addTrackFavThunk } from "../redux/action/fetchFavortis"
+import { Star, StarFill } from "react-bootstrap-icons"
+import { addTrackFavThunk, removeTrack } from "../redux/action/fetchFavortis"
 import Spinner from 'react-bootstrap/Spinner'
+import { useEffect, useState } from "react"
 const ShowAlbum = () => {
     const album = useSelector((state) => state.searchResult.singleAlbum[0])
     const tracks = useSelector((state) => state.searchResult.singleAlbum[0].tracks.data)
+
+    const favorits = useSelector((state) => state.favorits.content)
     const dispatch = useDispatch()
+    console.log(favorits)
+
+
+    const addToPre = (id) => {
+        dispatch(addTrackFavThunk(id))
+
+    }
+    const removeToPre = (id) => {
+
+        dispatch(removeTrack(id))
+    }
+    useEffect(() => {
+
+    }, [])
+    useEffect(() => {
+
+    }, [favorits])
+
     return (
         <> <Col>
 
@@ -28,7 +49,10 @@ const ShowAlbum = () => {
                     <a href="#" class="card-title trackHover px-3" style={{ color: "white" }} >{
                         track.title
                     }</a>
-                    <Star class="text-white" onClick={() => dispatch(addTrackFavThunk(track.id))}></Star>
+                    <StarFill className="text.white" style={{ color: favorits.find(e => e.id == track.id) ? "green" : "white" }} onClick={() => {
+                        favorits.find(e => e.id == track.id) ? removeToPre(track.id) : addToPre(track.id);
+                    }} />
+
                     <small class="duration" style={{ color: "white" }}>{Math.floor(
                         parseInt(track.duration) / 60 // setting the duration minutes
                     )}:{
